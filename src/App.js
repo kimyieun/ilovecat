@@ -7,19 +7,21 @@ export default class App {
     console.log("App is created!");
 
     const body = document.body;
+    const top = document.createElement("div");
+    top.className = "top";
 
-    const searchBar = new SearchBar(body);
-    const searchResult = new SearchResult(body, []);
+    const bottom = document.createElement("div");
+    bottom.className = "bottom";
 
-    const data = api.fetchImage("no");
-    const data2 = api.fetchImageAll();
+    const onsearch = (keyword) => {
+      api.fetchImage(keyword).then((result) => {
+        searchResult.updateData(result);
+      });
+    };
+    const searchBar = new SearchBar(top, onsearch);
+    const searchResult = new SearchResult(bottom);
 
-    data.then((cats) => {
-      console.log(cats);
-    });
-
-    data2.then((cats) => {
-      console.log(cats);
-    });
+    body.appendChild(top);
+    body.appendChild(bottom);
   }
 }

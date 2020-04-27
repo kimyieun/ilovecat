@@ -1,30 +1,28 @@
 import Item from "./Item.js";
 
 export default class SearchResult {
-  constructor($target, data) {
+  constructor($target) {
     this.$target = $target;
-    this.data = data;
+    this.data = [];
+  }
 
+  updateData(data) {
+    this.data = data;
     this.render();
   }
 
   render() {
-    const bottom = document.createElement("div");
-    bottom.className = "bottom";
-
     const itemGroupWrapper = document.createElement("div");
-    itemGroupWrapper.className = "wrapper";
+    itemGroupWrapper.className = "GroupWrapper";
 
     const itemGroup = document.createElement("div");
     itemGroup.className = "item-group";
 
     this.data.forEach((cat) => {
-      const item = new Item(this.$target, cat);
-      itemGroup.appendChild(item);
+      new Item(itemGroup, cat);
     });
 
     itemGroupWrapper.appendChild(itemGroup);
-    bottom.appendChild(itemGroupWrapper);
-    this.$target.appendChild(bottom);
+    this.$target.appendChild(itemGroupWrapper);
   }
 }
