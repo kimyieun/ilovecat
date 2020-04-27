@@ -8,8 +8,10 @@ export default class Item {
 
   render() {
     const { url } = this.data;
-    const { temperament, origin } = this.data.breeds[0];
-    console.log(this.data);
+    const { temperament, origin } = this.data.breeds.length
+      ? this.data.breeds[0]
+      : { temperament: "No Information", origin: "No Information" };
+
     const itemWrapper = document.createElement("div");
     itemWrapper.className = "wrapper";
 

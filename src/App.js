@@ -4,21 +4,27 @@ import { api } from "./api/theCatAPI.js";
 
 export default class App {
   constructor() {
-    console.log("App is created!");
-
     const body = document.body;
+
     const top = document.createElement("div");
     top.className = "top";
 
     const bottom = document.createElement("div");
     bottom.className = "bottom";
 
-    const onsearch = (keyword) => {
+    const onSearch = (keyword) => {
       api.fetchImage(keyword).then((result) => {
+        while (bottom.firstChild) bottom.removeChild(bottom.lastChild);
         searchResult.updateData(result);
       });
     };
-    const searchBar = new SearchBar(top, onsearch);
+
+    const onRandomSearch = () => {
+      api.fetchImageAll().then((result) => {
+        searchResult.updateData(result);
+      });
+    };
+    const searchBar = new SearchBar(top, onSearch, onRandomSearch);
     const searchResult = new SearchResult(bottom);
 
     body.appendChild(top);
