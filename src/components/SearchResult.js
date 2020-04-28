@@ -19,7 +19,7 @@ export default class SearchResult {
     itemGroup.className = "item-group";
 
     this.data.forEach((cat) => {
-      new Item(itemGroup, cat);
+      new Item(itemGroup, null, cat);
     });
 
     itemGroupWrapper.appendChild(itemGroup);

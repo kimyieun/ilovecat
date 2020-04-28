@@ -1,6 +1,9 @@
+import Modal from "./Modal.js";
+
 export default class Item {
-  constructor($target, data) {
+  constructor($target, onClick, data) {
     this.$target = $target;
+    this.onClick = onClick;
     this.data = data;
 
     this.render();
@@ -32,6 +35,13 @@ export default class Item {
     const itemOrigin = document.createElement("p");
     itemOrigin.className = "item-origin";
     itemOrigin.innerText = origin;
+
+    itemWrapper.addEventListener("click", (ev) => {
+      // this.onClick(this);
+      document.querySelector(".modal").style.display = "block";
+      const data = { url: url, temperament: temperament, origin: origin };
+      new Modal(document.querySelector(".modalContent"), data);
+    });
 
     itemDescription.appendChild(itemTemper);
     itemDescription.appendChild(itemOrigin);
