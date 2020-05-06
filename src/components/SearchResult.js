@@ -24,5 +24,7 @@ export default class SearchResult {
 
     itemGroupWrapper.appendChild(itemGroup);
     this.$target.appendChild(itemGroupWrapper);
+
+    console.log(document.querySelectorAll("img.lazy"));
   }
 }

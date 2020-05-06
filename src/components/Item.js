@@ -22,8 +22,9 @@ export default class Item {
     item.className = "item";
 
     const itemImg = document.createElement("img");
-    itemImg.className = "item-img";
+    itemImg.className = "lazy";
     itemImg.src = url;
+    itemImg.dataset.src = url;
 
     const itemDescription = document.createElement("div");
     itemDescription.className = "item-description";
