@@ -1,9 +1,11 @@
 import Item from "./Item.js";
+import { lazyLoad } from "../util/lazyLoad.js";
 
 export default class SearchResult {
   constructor($target) {
     this.$target = $target;
     this.data = [];
+    this.render();
   }
 
   updateData(data) {
@@ -25,6 +27,6 @@ export default class SearchResult {
     itemGroupWrapper.appendChild(itemGroup);
     this.$target.appendChild(itemGroupWrapper);
 
-    console.log(document.querySelectorAll("img.lazy"));
+    lazyLoad();
   }
 }

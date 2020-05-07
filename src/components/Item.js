@@ -23,7 +23,6 @@ export default class Item {
 
     const itemImg = document.createElement("img");
     itemImg.className = "lazy";
-    itemImg.src = url;
     itemImg.dataset.src = url;
 
     const itemDescription = document.createElement("div");
@@ -38,7 +37,6 @@ export default class Item {
     itemOrigin.innerText = origin;
 
     itemWrapper.addEventListener("click", (ev) => {
-      // this.onClick(this);
       document.querySelector(".modal").style.display = "block";
       const data = { url: url, temperament: temperament, origin: origin };
       new Modal(document.querySelector(".modalContent"), data);
